@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: light; }
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  body {
+    @apply bg-canvas font-sans text-plum antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection { background: #e6d9ff; color: #383047; }
+  h1, h2, h3, h4 { @apply font-display text-plum; }
+  :focus-visible { outline: 2px solid #7a5bc7; outline-offset: 3px; border-radius: 8px; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #f5f0ff; }
+  ::-webkit-scrollbar-thumb { background: #d9c9f7; border-radius: 10px; border: 2px solid #f5f0ff; }
+  ::-webkit-scrollbar-thumb:hover { background: #b99aef; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-content px-5 sm:px-8; }
+  .section { @apply relative py-20 sm:py-28; }
+
+  /* Surfaces */
+  .card {
+    @apply rounded-3xl border border-line bg-white shadow-soft;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:border-lilac/60 hover:shadow-lift;
+  }
+
+  /* Text accents */
+  .text-gradient {
+    @apply bg-gradient-to-r from-iris-deep via-iris to-[#B074C9] bg-clip-text text-transparent;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-iris;
+  }
+
+  /* Tags */
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line bg-canvas px-3 py-1 text-[12.5px] font-medium text-plum-soft;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300;
+  }
+  .btn-primary {
+    @apply btn bg-plum text-white shadow-pill hover:-translate-y-0.5 hover:bg-[#4a3f5e] hover:shadow-lift;
+  }
+  .btn-soft {
+    @apply btn border border-line bg-white text-plum shadow-soft hover:-translate-y-0.5 hover:border-lilac hover:bg-ivory;
+  }
+  .icon-btn {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-plum-soft shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-lilac hover:text-iris-deep;
+  }
+
+  /* Pastel icon tile */
+  .icon-tile {
+    @apply flex items-center justify-center rounded-2xl bg-gradient-to-br from-lavender to-blush text-iris-deep;
+  }
+}
+
+.bg-pastel {
+  background: linear-gradient(135deg, #f5f0ff, #f9e6f0, #e6d9ff);
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(122, 91, 199, 0.16) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 65% 55% at 50% 45%, #000 30%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
